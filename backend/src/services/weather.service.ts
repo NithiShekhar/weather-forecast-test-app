@@ -1,3 +1,4 @@
+import axios from 'axios';
 
 export interface ForecastModel {
     latitude: number,
@@ -19,16 +20,27 @@ export async function getWeatherForecast(lat: number, lng: number): Promise<Fore
     // use axios to make the call
     //  https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current_weather=true
 
-    return {
-        latitude: 52.52,
-        longitude: 13.41,
-        elevation: 0,
-        current_weather: {
-            temperature: 10,
-            windspeed: 10,
-            winddirection: 10,
-            weathercode: 10,
-            time: new Date()
+    // return {
+    //     latitude: 52.52,
+    //     longitude: 13.41,
+    //     elevation: 0,
+    //     current_weather: {
+    //         temperature: 10,
+    //         windspeed: 10,
+    //         winddirection: 10,
+    //         weathercode: 10,
+    //         time: new Date()
+    //     }
+    // };
+
+    // making an http call to the api using axios as per suggestion in TODO
+    // But noticed that the frontend folder already has a backend-api.ts file
+    // that is using axios which is used in weather-service.service.ts file in frontend
+    return axios.get<ForecastModel, any>('https://api.open-meteo.com/v1/forecast', {
+        params: {
+            latitude: lat,
+            longitude: lng,
+            current_weather: true
         }
-    };
+    });
 }

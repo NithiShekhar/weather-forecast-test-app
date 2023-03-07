@@ -2,7 +2,7 @@
   <div class="hello">
     <h3>Weather forecast for city</h3>
 
-    TODO
+    TODO hello
     
   </div>
 </template>
