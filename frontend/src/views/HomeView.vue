@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <SearchCity />
-    <WeatherForecast />
+    <SearchCity @setSelectedCity="setSelectedCity"/>
+    <WeatherForecast :selectedCity="selectedCity"/>
   </div>
 </template>
 
